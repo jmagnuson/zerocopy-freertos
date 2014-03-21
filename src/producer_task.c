@@ -45,7 +45,7 @@
 // The stack size for the task
 //
 //*****************************************************************************
-#define tskPRODUCER_PRIORITY        tskIDLE_PRIORITY + 1 // Stack size in words
+#define tskPRODUCER_PRIORITY        (tskIDLE_PRIORITY + 1) // Stack size in words
 
 //*****************************************************************************
 //
@@ -86,14 +86,17 @@ prvProducerTask(void *pvParameters)
 		{
 			message.buffer_ptr = (circular_buffer->buffer+circular_buffer->tail);
 			message.buffer_len = local_buffer_length;
-			message.consumer_count_barrier = barrier_array;
+			message.consumer_count_barrier = &barrier_array[local_counter%10];
 			message.consumer_count_barrier->barrier_count = consumer_task_count;
 
 			for (i=0; i<consumer_task_count; i++)
 			{
 				if (xQueueSendToBack(queue[i], &message, (portTickType) 100) != pdPASS)
 				{
-					// Failed.  Reverse cbuff data immediately!
+					// Consumer doesn't get the data.  Reflect this in barrier.
+					portENTER_CRITICAL();
+					((barrier_array[local_counter%10]).barrier_count)--;
+					portEXIT_CRITICAL();
 				}
 			}
 		}
@@ -106,7 +109,7 @@ prvProducerTask(void *pvParameters)
 // Init task
 //
 //*****************************************************************************
-/*extern*/ unsigned long
+extern unsigned long
 init_producer_task(void *pvParameters)
 {
 	xProducerTaskParams *taskParams = ( xProducerTaskParams * ) pvPortMalloc( sizeof( xProducerTaskParams ) );

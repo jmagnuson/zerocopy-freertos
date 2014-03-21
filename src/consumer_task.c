@@ -50,7 +50,7 @@
 // The stack size for the task
 //
 //*****************************************************************************
-#define tskCONSUMER_PRIORITY        tskIDLE_PRIORITY + 1 // Stack size in words
+#define tskCONSUMER_PRIORITY        (tskIDLE_PRIORITY + 1) // Stack size in words
 
 //*****************************************************************************
 //
@@ -118,7 +118,7 @@ prvConsumerTask(void *pvParameters)
 // Init task
 //
 //*****************************************************************************
-/*extern*/ unsigned long
+extern unsigned long
 init_consumer_task(void *pvParameters)
 {
 	xConsumerTaskParams *taskParams =
