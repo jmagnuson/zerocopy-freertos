@@ -47,10 +47,10 @@
 
 //*****************************************************************************
 //
-// The stack size for the task
+// Priority for the task
 //
 //*****************************************************************************
-#define tskCONSUMER_PRIORITY        (tskIDLE_PRIORITY + 1) // Stack size in words
+#define tskCONSUMER_PRIORITY        (tskIDLE_PRIORITY + 1) // Offset from IDLE priority
 
 //*****************************************************************************
 //

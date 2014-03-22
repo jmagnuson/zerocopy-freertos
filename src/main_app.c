@@ -36,8 +36,8 @@
 #include "ConsumerTaskParams.h"
 #include "QueueMessage.h"
 
-extern unsigned long init_consumer_task( void *pvParameters );
-extern unsigned long init_producer_task( void *pvParameters );
+unsigned long init_consumer_task( void *pvParameters );
+unsigned long init_producer_task( void *pvParameters );
 
 #define mainQUEUE_LENGTH 10
 #define CBUFF_ARRAY_LENGTH 2048
