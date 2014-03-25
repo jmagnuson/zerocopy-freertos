@@ -102,8 +102,7 @@ prvConsumerTask(void *pvParameters)
 		{
 			// Last barrier, turn off the light
 			CircularBufferReadLockable( circular_buffer, NULL, local_buffer_length );
-			// TODO: put turn-off-lights function into dec_barrier?
-			// also might not be thread-safe doing it the current way.
+			// TODO: put into dec_barrier?
 		}
 		else if (barrier_result < 0)
 		{

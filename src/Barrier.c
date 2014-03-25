@@ -44,6 +44,8 @@ int set_barrier(Barrier *b, unsigned int count)
 
 int decrement_barrier(Barrier *b)
 {
+	int return_value = -1;
+
 	// Take mutex
 	if (xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
 	{
@@ -52,11 +54,11 @@ int decrement_barrier(Barrier *b)
 	}
 	
 	// Set barrier
-	b->barrier_count--;
+	return_value = b->barrier_count--;
 	
 	// Give mutex
 	xSemaphoreGive( b->lock_mutex);
 	
 	// Return barrier value
-	return b->barrier_count;
+	return return_value;
 }

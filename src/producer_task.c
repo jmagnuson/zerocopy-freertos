@@ -65,6 +65,7 @@ prvProducerTask(void *pvParameters)
 	portBASE_TYPE local_buffer_length = 0;
 	portBASE_TYPE local_counter = 0;
 	unsigned int i = 0;
+
 	/* Variable initialization */
 	queue = ((xProducerTaskParams*)pvParameters)->queue;
 	circular_buffer = ((xProducerTaskParams*)pvParameters)->circular_buffer;
@@ -112,11 +113,15 @@ prvProducerTask(void *pvParameters)
 extern unsigned long
 init_producer_task(void *pvParameters)
 {
-	xProducerTaskParams *taskParams = ( xProducerTaskParams * ) pvPortMalloc( sizeof( xProducerTaskParams ) );
+	xProducerTaskParams *taskParams =
+			( xProducerTaskParams * ) pvPortMalloc( sizeof( xProducerTaskParams ) );
 
-	taskParams->queue = ((xProducerTaskInitParams*) pvParameters)->queue;
-	taskParams->circular_buffer = ((xProducerTaskInitParams*) pvParameters)->circular_buffer;
-	taskParams->consumer_task_count = ((xProducerTaskInitParams*) pvParameters)->consumer_task_count;
+	taskParams->queue =
+			((xProducerTaskInitParams*) pvParameters)->queue;
+	taskParams->circular_buffer =
+			((xProducerTaskInitParams*) pvParameters)->circular_buffer;
+	taskParams->consumer_task_count =
+			((xProducerTaskInitParams*) pvParameters)->consumer_task_count;
 
 	Barrier *barrier_array = pvPortMalloc( 10 * sizeof( Barrier ) );
 	{ // Scope out the counter
