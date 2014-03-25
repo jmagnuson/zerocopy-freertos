@@ -54,9 +54,11 @@ typedef struct CircularBufferLockable
 
 } CircularBufferLockable;
 
+int CircularBufferInitialize(CircularBuffer *c, unsigned char *buffer, unsigned int buffer_size);
 int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int length);
 int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int length);
 
+int CircularBufferInitializeLockable(CircularBufferLockable *c, unsigned char *buffer, unsigned int buffer_size);
 int CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length);
 int CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length);
 

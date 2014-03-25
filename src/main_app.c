@@ -50,8 +50,6 @@ void main_app( void )
 	static xProducerTaskInitParams producerTaskInitParams;
 	static xConsumerTaskInitParams consumerTaskInitParams[NUM_OF_CONSUMERS];
 	QueueHandle_t xQueueArray[NUM_OF_CONSUMERS];
-	//static QueueHandle_t xQueue = NULL;
-	//static Barrier barrier;
 	static portBASE_TYPE circular_buffer_array[CBUFF_ARRAY_LENGTH];
 	static CircularBufferLockable circular_buffer = {NULL, NULL, NULL, NULL, NULL, NULL};
 
@@ -63,10 +61,7 @@ void main_app( void )
 			xQueueArray[i] = xQueueCreate( mainQUEUE_LENGTH, sizeof( QueueMessage ) );
 		}
 	}
-	// TODO: Make an initializer function for this
-	circular_buffer.buffer = &circular_buffer_array[0];
-	circular_buffer.size = CBUFF_ARRAY_LENGTH;
-	circular_buffer.lock_mutex = xSemaphoreCreateMutex();
+	CircularBufferInitializeLockable(&circular_buffer, &circular_buffer_array[0], CBUFF_ARRAY_LENGTH);
 	
 	producerTaskInitParams.queue = xQueueArray;
 	producerTaskInitParams.circular_buffer = &circular_buffer;

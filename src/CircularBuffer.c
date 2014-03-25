@@ -34,6 +34,19 @@
 /******************************************************************************
 	Non-thread-safe routines
 ******************************************************************************/
+
+int
+CircularBufferInitialize(CircularBuffer *c, unsigned char *buffer, unsigned int buffer_size)
+{
+	c->buffer = buffer;
+	c->size = buffer_size;
+	c->head = 0;
+	c->tail = 0;
+	c->length = 0;
+
+	return 0;
+}
+
 int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int length)
 {
 	if (c->size >= (c->length + length)){
@@ -105,7 +118,28 @@ int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int l
 /******************************************************************************
 	Thread-safe routines
 ******************************************************************************/
-int CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length)
+
+int
+CircularBufferInitializeLockable(CircularBufferLockable *c, unsigned char *buffer, unsigned int buffer_size)
+{
+	c->buffer = buffer;
+	c->size = buffer_size;
+	c->head = 0;
+	c->tail = 0;
+	c->length = 0;
+	c->lock_mutex = xSemaphoreCreateMutex();
+
+	if (c->lock_mutex == NULL)
+	{
+		// Return failure
+		return -1;
+	}
+
+	return 0;
+}
+
+int
+CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length)
 {
 
 	int result = 0;
@@ -153,7 +187,8 @@ int CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn
 	return result;
 }
 
-int CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length){
+int
+CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length){
 
 	int result = 0;
 
