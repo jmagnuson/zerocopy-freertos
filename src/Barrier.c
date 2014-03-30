@@ -53,8 +53,8 @@ int decrement_barrier(Barrier *b)
 		return -1;
 	}
 	
-	// Set barrier
-	return_value = b->barrier_count--;
+	// Decrement barrier
+	return_value = --(b->barrier_count);
 	
 	// Give mutex
 	xSemaphoreGive( b->lock_mutex);
