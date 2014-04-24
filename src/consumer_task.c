@@ -70,9 +70,9 @@ prvConsumerTask(void *pvParameters)
 	portBASE_TYPE local_buffer_length = 0;
 	
 	/* Variable initialization */
-	queue = ((xConsumerTaskParams*)pvParameters)->queue;
+	queue =           ((xConsumerTaskParams*)pvParameters)->queue;
 	circular_buffer = ((xConsumerTaskParams*)pvParameters)->circular_buffer;
-	consumer_id = ((xConsumerTaskParams*)pvParameters)->consumer_id;
+	consumer_id =     ((xConsumerTaskParams*)pvParameters)->consumer_id;
 	
 	int barrier_result = 0;
 
@@ -100,13 +100,13 @@ prvConsumerTask(void *pvParameters)
 
 		if (barrier_result == 0)
 		{
-			// Last barrier, turn off the light
+			// Last barrier, free up cbuff memory
 			CircularBufferReadLockable( circular_buffer, NULL, local_buffer_length );
 			// TODO: put into dec_barrier?
 		}
 		else if (barrier_result < 0)
 		{
-			// uh oh
+			// Shouldn't happen since consumer_count_barrier is protected by lock.
 		}
 	}
 

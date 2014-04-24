@@ -23,10 +23,15 @@
 /* Application includes. */
 #include "Barrier.h"
 
+#if defined ( __GNUC__ )
+#define X86_ATOMIC
+// TODO: Implement generalized atomic check
+#endif
+
 int set_barrier(Barrier *b, unsigned int count)
 {
 	// Take mutex
-	if (xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
+	if ( xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
 	{
 		// Return failure
 		return -1;
@@ -36,7 +41,7 @@ int set_barrier(Barrier *b, unsigned int count)
 	b->barrier_count = count;
 	
 	// Give mutex
-	xSemaphoreGive( b->lock_mutex);
+	xSemaphoreGive( b->lock_mutex );
 	
 	// Return barrier value
 	return count;
@@ -46,8 +51,12 @@ int decrement_barrier(Barrier *b)
 {
 	int return_value = -1;
 
+#if defined(X86_ATOMIC)
+	// Decrement barrier
+	return_value = (int)__sync_sub_and_fetch(&(b->barrier_count), 1);
+#else
 	// Take mutex
-	if (xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
+	if ( xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
 	{
 		// Return failure
 		return -1;
@@ -57,7 +66,8 @@ int decrement_barrier(Barrier *b)
 	return_value = --(b->barrier_count);
 	
 	// Give mutex
-	xSemaphoreGive( b->lock_mutex);
+	xSemaphoreGive( b->lock_mutex );
+#endif
 	
 	// Return barrier value
 	return return_value;

@@ -67,10 +67,10 @@ prvProducerTask(void *pvParameters)
 	unsigned int i = 0;
 
 	/* Variable initialization */
-	queue = ((xProducerTaskParams*)pvParameters)->queue;
-	circular_buffer = ((xProducerTaskParams*)pvParameters)->circular_buffer;
+	queue =               ((xProducerTaskParams*)pvParameters)->queue;
+	circular_buffer =     ((xProducerTaskParams*)pvParameters)->circular_buffer;
 	consumer_task_count = ((xProducerTaskParams*)pvParameters)->consumer_task_count;
-	barrier_array = ((xProducerTaskParams*)pvParameters)->barrier_array;
+	barrier_array =       ((xProducerTaskParams*)pvParameters)->barrier_array;
 
 	for (;;)
 	{
@@ -81,6 +81,7 @@ prvProducerTask(void *pvParameters)
 
 		sprintf(local_buffer, "%d", local_counter++);
 		local_buffer_length = strlen(local_buffer);
+		printf("p%02d: %s\n", 0, (char*)local_buffer);
 
 		// Send message
 		if (CircularBufferWriteLockable(circular_buffer, local_buffer,local_buffer_length) > 0)
