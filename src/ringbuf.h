@@ -1,7 +1,6 @@
 /****************************************************************************
 *
-* Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Copyright (C) 2014, Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -21,29 +20,29 @@
 ****************************************************************************/
 
 /*
- * CircularBuffer.h
+ * ringbuf.h
  *
  *  Created on: Nov 2, 2012
  *      Author: jon
  */
 
-#ifndef CIRCULARBUFFER_H_
-#define CIRCULARBUFFER_H_
+#ifndef RINGBUF_H_
+#define RINGBUF_H_
 
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "semphr.h"
 
-typedef struct CircularBuffer
+typedef struct _ringbuf_t
 {
 	char* buffer; // TODO: this should be portBASE_TYPE
 	unsigned int size;
 	unsigned int head;
 	unsigned int tail;
 	size_t length;
-} CircularBuffer;
+} ringbuf_t;
 
-typedef struct CircularBufferLockable
+typedef struct _atomic_ringbuf_t
 {
 	xSemaphoreHandle lock_mutex;
 	char* buffer; // TODO: this should be portBASE_TYPE
@@ -51,15 +50,14 @@ typedef struct CircularBufferLockable
 	unsigned int head;
 	unsigned int tail;
 	size_t length;
+} atomic_ringbuf_t;
 
-} CircularBufferLockable;
+int init_ringbuf(ringbuf_t *c, unsigned char *buffer, unsigned int buffer_size);
+int write_ringbuf(ringbuf_t *c, unsigned char *dataIn, unsigned int length);
+int read_ringbuf(ringbuf_t *c, unsigned char *dataOut, unsigned int length);
 
-int CircularBufferInitialize(CircularBuffer *c, unsigned char *buffer, unsigned int buffer_size);
-int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int length);
-int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int length);
-
-int CircularBufferInitializeLockable(CircularBufferLockable *c, unsigned char *buffer, unsigned int buffer_size);
-int CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length);
-int CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length);
+int init_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *buffer, unsigned int buffer_size);
+int write_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *dataIn, unsigned int length);
+int read_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *dataOut, unsigned int length);
 
 #endif /* CIRCULARBUFFER_H_ */

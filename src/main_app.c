@@ -1,7 +1,7 @@
 /****************************************************************************
 *
 * Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Written by Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -30,11 +30,11 @@
 #include "task.h"
 
 /* Application includes. */
-#include "CircularBuffer.h"
-#include "Barrier.h"
-#include "ProducerTaskParams.h"
-#include "ConsumerTaskParams.h"
-#include "QueueMessage.h"
+#include "ringbuf.h"
+#include "barcnt.h"
+#include "producer_task.h"
+#include "consumer_task.h"
+#include "queuemsg.h"
 
 unsigned long init_consumer_task( void *pvParameters );
 unsigned long init_producer_task( void *pvParameters );
@@ -51,17 +51,17 @@ void main_app( void )
 	static xConsumerTaskInitParams consumerTaskInitParams[NUM_OF_CONSUMERS];
 	QueueHandle_t xQueueArray[NUM_OF_CONSUMERS];
 	static portBASE_TYPE circular_buffer_array[CBUFF_ARRAY_LENGTH];
-	static CircularBufferLockable circular_buffer = {NULL, NULL, NULL, NULL, NULL, NULL};
+	static atomic_ringbuf_t circular_buffer = {NULL, NULL, NULL, NULL, NULL, NULL};
 
 	/* Variable initialization */
 	{	
-        unsigned int i =0;
+        volatile unsigned int i =0;
 		for (i=0; i<NUM_OF_CONSUMERS; i++)
 		{
-			xQueueArray[i] = xQueueCreate( mainQUEUE_LENGTH, sizeof( QueueMessage ) );
+			xQueueArray[i] = xQueueCreate( mainQUEUE_LENGTH, sizeof( queuemsg_t ) );
 		}
 	}
-	CircularBufferInitializeLockable(&circular_buffer, &circular_buffer_array[0], CBUFF_ARRAY_LENGTH);
+	init_atomic_ringbuf(&circular_buffer, &circular_buffer_array[0], CBUFF_ARRAY_LENGTH);
 	
 	producerTaskInitParams.queue = xQueueArray;
 	producerTaskInitParams.circular_buffer = &circular_buffer;
@@ -69,7 +69,7 @@ void main_app( void )
 	init_producer_task( &producerTaskInitParams );
 	
 	{
-		unsigned int i = 0;
+		volatile unsigned int i = 0;
 		for (i=0; i<NUM_OF_CONSUMERS; i++)
 		{
 			consumerTaskInitParams[i].queue = xQueueArray[i];

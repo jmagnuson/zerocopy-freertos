@@ -1,7 +1,7 @@
 /****************************************************************************
 *
 * Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Written by Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -28,14 +28,14 @@
 #include "queue.h"
 
 /* Application includes. */
-#include "Barrier.h"
-#include "CircularBuffer.h"
+#include "barcnt.h"
+#include "ringbuf.h"
 
 typedef struct xProducerTaskInitParams {
 
 	QueueHandle_t* queue;
-	//Barrier* barrier;
-	CircularBufferLockable* circular_buffer;
+	//barcnt* barrier;
+	atomic_ringbuf_t* circular_buffer;
 	unsigned int consumer_task_count;
 	
 } xProducerTaskInitParams;
@@ -43,8 +43,8 @@ typedef struct xProducerTaskInitParams {
 typedef struct xProducerTaskParams {
 
 	QueueHandle_t* queue;
-	Barrier* barrier_array;
-	CircularBufferLockable* circular_buffer;
+	barcnt_t* barrier_array;
+	atomic_ringbuf_t* circular_buffer;
 	unsigned int consumer_task_count;
 	
 } xProducerTaskParams;

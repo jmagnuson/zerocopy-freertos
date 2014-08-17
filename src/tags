@@ -5,42 +5,35 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 A_BLOCK_LINK	.\freertos\portable\memang\heap_4.c	/^typedef struct A_BLOCK_LINK$/;"	s	file:
+BARCNT_H_	.\barcnt.h	23;"	d
 BARRIER_H_	.\Barrier.h	24;"	d
 Barrier	.\Barrier.h	/^typedef struct Barrier$/;"	s
 Barrier	.\Barrier.h	/^} Barrier;$/;"	t	typeref:struct:Barrier
 BaseType_t	.\freertos\portable\mingw\portmacro.h	/^typedef long BaseType_t;$/;"	t
 BlockLink_t	.\freertos\portable\memang\heap_4.c	/^} BlockLink_t;$/;"	t	typeref:struct:A_BLOCK_LINK	file:
 CBUFF_ARRAY_LENGTH	.\main_app.c	43;"	d	file:
-CHANNEL_FORMAT_PAIRS	.\freertos\portable\mingw\trcConfig.h	139;"	d
 CIRCULARBUFFER_H_	.\CircularBuffer.h	31;"	d
-CONSUMERTASKPARAMS_H_	.\ConsumerTaskParams.h	24;"	d
+CONSUMERTASKPARAMS_H_	.\consumer_task.h	24;"	d
 CO_ROUTINE_H	.\freertos\include\croutine.h	67;"	d
 CRCB_t	.\freertos\include\croutine.h	/^} CRCB_t; \/* Co-routine control block.  Note must be identical in size down to uxPriority with TCB_t. *\/$/;"	t	typeref:struct:corCoRoutineControlBlock
 CallbackParameters_t	.\freertos\timers.c	/^} CallbackParameters_t;$/;"	t	typeref:struct:tmrCallbackParameters	file:
 CircularBuffer	.\CircularBuffer.h	/^typedef struct CircularBuffer$/;"	s
 CircularBuffer	.\CircularBuffer.h	/^} CircularBuffer;$/;"	t	typeref:struct:CircularBuffer
+CircularBufferInitialize	.\CircularBuffer.c	/^CircularBufferInitialize(CircularBuffer *c, unsigned char *buffer, unsigned int buffer_size)$/;"	f
+CircularBufferInitializeLockable	.\CircularBuffer.c	/^CircularBufferInitializeLockable(CircularBufferLockable *c, unsigned char *buffer, unsigned int buffer_size)$/;"	f
 CircularBufferLockable	.\CircularBuffer.h	/^typedef struct CircularBufferLockable$/;"	s
 CircularBufferLockable	.\CircularBuffer.h	/^} CircularBufferLockable;$/;"	t	typeref:struct:CircularBufferLockable
-CircularBufferRead	.\CircularBuffer.c	/^int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int length){$/;"	f
-CircularBufferReadLockable	.\CircularBuffer.c	/^int CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length){$/;"	f
-CircularBufferWrite	.\CircularBuffer.c	/^int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int length){$/;"	f
-CircularBufferWriteLockable	.\CircularBuffer.c	/^int CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length){$/;"	f
+CircularBufferRead	.\CircularBuffer.c	/^int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int length)$/;"	f
+CircularBufferReadLockable	.\CircularBuffer.c	/^CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length){$/;"	f
+CircularBufferWrite	.\CircularBuffer.c	/^int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int length)$/;"	f
+CircularBufferWriteLockable	.\CircularBuffer.c	/^CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length)$/;"	f
 CoRoutineHandle_t	.\freertos\include\croutine.h	/^typedef void * CoRoutineHandle_t;$/;"	t
 DaemonTaskMessage_t	.\freertos\timers.c	/^} DaemonTaskMessage_t;$/;"	t	typeref:struct:tmrTimerQueueMessage	file:
-EVENT_BUFFER_SIZE	.\freertos\portable\mingw\trcConfig.h	60;"	d
 EVENT_GROUPS_H	.\freertos\include\event_groups.h	67;"	d
 EventBits_t	.\freertos\include\event_groups.h	/^typedef TickType_t EventBits_t;$/;"	t
 EventGroupHandle_t	.\freertos\include\event_groups.h	/^typedef void * EventGroupHandle_t;$/;"	t
 EventGroup_t	.\freertos\event_groups.c	/^} EventGroup_t;$/;"	t	typeref:struct:xEventGroupDefinition	file:
 FREERTOS_CONFIG_H	.\freertos\FreeRTOSConfig.h	68;"	d
-HEAP_SIZE_BELOW_16M	.\freertos\portable\mingw\trcConfig.h	527;"	d
-INCLUDE_FLOAT_SUPPORT	.\freertos\portable\mingw\trcConfig.h	263;"	d
-INCLUDE_ISR_TRACING	.\freertos\portable\mingw\trcConfig.h	317;"	d
-INCLUDE_MEMMANG_EVENTS	.\freertos\portable\mingw\trcConfig.h	340;"	d
-INCLUDE_NEW_TIME_EVENTS	.\freertos\portable\mingw\trcConfig.h	302;"	d
-INCLUDE_OBJECT_DELETE	.\freertos\portable\mingw\trcConfig.h	329;"	d
-INCLUDE_READY_EVENTS	.\freertos\portable\mingw\trcConfig.h	291;"	d
-INCLUDE_USER_EVENTS	.\freertos\portable\mingw\trcConfig.h	279;"	d
 INCLUDE_eTaskGetState	.\freertos\FreeRTOSConfig.h	141;"	d
 INCLUDE_eTaskGetState	.\freertos\include\FreeRTOS.h	205;"	d
 INCLUDE_pcTaskGetTaskName	.\freertos\FreeRTOSConfig.h	140;"	d
@@ -86,21 +79,7 @@ MPU_WRAPPERS_INCLUDED_FROM_API_FILE	.\freertos\timers.c	72;"	d	file:
 MPU_WRAPPERS_INCLUDED_FROM_API_FILE	.\freertos\timers.c	87;"	d	file:
 MemoryRegion_t	.\freertos\include\task.h	/^} MemoryRegion_t;$/;"	t	typeref:struct:xMEMORY_REGION
 MiniListItem_t	.\freertos\include\list.h	/^typedef struct xMINI_LIST_ITEM MiniListItem_t;$/;"	t	typeref:struct:xMINI_LIST_ITEM
-NEventGroup	.\freertos\portable\mingw\trcConfig.h	179;"	d
-NISR	.\freertos\portable\mingw\trcConfig.h	174;"	d
-NMutex	.\freertos\portable\mingw\trcConfig.h	177;"	d
-NQueue	.\freertos\portable\mingw\trcConfig.h	175;"	d
-NSemaphore	.\freertos\portable\mingw\trcConfig.h	176;"	d
-NTask	.\freertos\portable\mingw\trcConfig.h	173;"	d
-NTimer	.\freertos\portable\mingw\trcConfig.h	178;"	d
 NUM_OF_CONSUMERS	.\main_app.c	45;"	d	file:
-NameLenEventGroup	.\freertos\portable\mingw\trcConfig.h	188;"	d
-NameLenISR	.\freertos\portable\mingw\trcConfig.h	183;"	d
-NameLenMutex	.\freertos\portable\mingw\trcConfig.h	186;"	d
-NameLenQueue	.\freertos\portable\mingw\trcConfig.h	184;"	d
-NameLenSemaphore	.\freertos\portable\mingw\trcConfig.h	185;"	d
-NameLenTask	.\freertos\portable\mingw\trcConfig.h	182;"	d
-NameLenTimer	.\freertos\portable\mingw\trcConfig.h	187;"	d
 PORTABLE_H	.\freertos\include\portable.h	71;"	d
 PORTMACRO_H	.\freertos\portable\mingw\portmacro.h	67;"	d
 PRIVILEGED_DATA	.\freertos\include\mpu_wrappers.h	138;"	d
@@ -108,34 +87,25 @@ PRIVILEGED_DATA	.\freertos\include\mpu_wrappers.h	145;"	d
 PRIVILEGED_FUNCTION	.\freertos\include\mpu_wrappers.h	132;"	d
 PRIVILEGED_FUNCTION	.\freertos\include\mpu_wrappers.h	137;"	d
 PRIVILEGED_FUNCTION	.\freertos\include\mpu_wrappers.h	144;"	d
-PRODUCERTASKPARAMS_H_	.\ProducerTaskParams.h	24;"	d
+PRODUCERTASKPARAMS_H_	.\producer_task.h	24;"	d
 PROJDEFS_H	.\freertos\include\projdefs.h	67;"	d
 PendedFunction_t	.\freertos\include\timers.h	/^typedef void (*PendedFunction_t)( void *, uint32_t );$/;"	t
-QUEUEMESSAGE_H_	.\QueueMessage.h	32;"	d
+QUEUEMESSAGE_H_	.\queuemsg.h	31;"	d
 QUEUE_H	.\freertos\include\queue.h	68;"	d
 QUEUE_REGISTRY_ITEM	.\freertos\queue.c	/^	typedef struct QUEUE_REGISTRY_ITEM$/;"	s	file:
 QueueDefinition	.\freertos\queue.c	/^typedef struct QueueDefinition$/;"	s	file:
 QueueHandle_t	.\freertos\include\queue.h	/^typedef void * QueueHandle_t;$/;"	t
-QueueMessage	.\QueueMessage.h	/^typedef struct QueueMessage$/;"	s
-QueueMessage	.\QueueMessage.h	/^} QueueMessage;$/;"	t	typeref:struct:QueueMessage
 QueueRegistryItem_t	.\freertos\queue.c	/^	typedef xQueueRegistryItem QueueRegistryItem_t;$/;"	t	file:
 QueueSetHandle_t	.\freertos\include\queue.h	/^typedef void * QueueSetHandle_t;$/;"	t
 QueueSetMemberHandle_t	.\freertos\include\queue.h	/^typedef void * QueueSetMemberHandle_t;$/;"	t
 Queue_t	.\freertos\queue.c	/^typedef xQUEUE Queue_t;$/;"	t	file:
-SELECTED_PORT	.\freertos\portable\mingw\trcConfig.h	492;"	d
+RINGBUF_H_	.\ringbuf.h	30;"	d
 SEMAPHORE_H	.\freertos\include\semphr.h	67;"	d
 STACK_MACROS_H	.\freertos\include\StackMacros.h	67;"	d
-STOP_AFTER_N_EVENTS	.\freertos\portable\mingw\trcConfig.h	396;"	d
-SYMBOL_TABLE_SIZE	.\freertos\portable\mingw\trcConfig.h	98;"	d
 SemaphoreHandle_t	.\freertos\include\semphr.h	/^typedef QueueHandle_t SemaphoreHandle_t;$/;"	t
 StackType_t	.\freertos\portable\mingw\portmacro.h	/^typedef portSTACK_TYPE StackType_t;$/;"	t
 TCB_t	.\freertos\tasks.c	/^typedef tskTCB TCB_t;$/;"	t	file:
 TIMERS_H	.\freertos\include\timers.h	68;"	d
-TRACE_DATA_ALLOCATION	.\freertos\portable\mingw\trcConfig.h	231;"	d
-TRACE_DESCRIPTION	.\freertos\portable\mingw\trcConfig.h	200;"	d
-TRACE_DESCRIPTION_MAX_LENGTH	.\freertos\portable\mingw\trcConfig.h	211;"	d
-TRACE_RECORDER_STORE_MODE	.\freertos\portable\mingw\trcConfig.h	381;"	d
-TRCCONFIG_H	.\freertos\portable\mingw\trcConfig.h	44;"	d
 TaskFunction_t	.\freertos\include\projdefs.h	/^typedef void (*TaskFunction_t)( void * );$/;"	t
 TaskHandle_t	.\freertos\include\task.h	/^typedef void * TaskHandle_t;$/;"	t
 TaskHookFunction_t	.\freertos\include\task.h	/^typedef BaseType_t (*TaskHookFunction_t)( void * );$/;"	t
@@ -149,30 +119,34 @@ TimerHandle_t	.\freertos\include\timers.h	/^typedef void * TimerHandle_t;$/;"	t
 TimerParameter_t	.\freertos\timers.c	/^} TimerParameter_t;$/;"	t	typeref:struct:tmrTimerParameters	file:
 Timer_t	.\freertos\timers.c	/^typedef xTIMER Timer_t;$/;"	t	file:
 UBaseType_t	.\freertos\portable\mingw\portmacro.h	/^typedef unsigned long UBaseType_t;$/;"	t
-USER_EVENT_BUFFER_SIZE	.\freertos\portable\mingw\trcConfig.h	128;"	d
-USE_16BIT_OBJECT_HANDLES	.\freertos\portable\mingw\trcConfig.h	472;"	d
-USE_IMPLICIT_IFE_RULES	.\freertos\portable\mingw\trcConfig.h	446;"	d
-USE_LINKER_PRAGMA	.\freertos\portable\mingw\trcConfig.h	82;"	d
-USE_PRIMASK_CS	.\freertos\portable\mingw\trcConfig.h	517;"	d
-USE_SEPARATE_USER_EVENT_BUFFER	.\freertos\portable\mingw\trcConfig.h	116;"	d
-USE_TRACE_ASSERT	.\freertos\portable\mingw\trcConfig.h	247;"	d
-barrier_array	.\ProducerTaskParams.h	/^	Barrier* barrier_array;$/;"	m	struct:xProducerTaskParams
+X86_ATOMIC	.\Barrier.c	27;"	d	file:
+X86_ATOMIC	.\barcnt.c	26;"	d	file:
+_atomic_ringbuf_t	.\ringbuf.h	/^typedef struct _atomic_ringbuf_t$/;"	s
+_barcnt_t	.\barcnt.h	/^typedef struct _barcnt_t$/;"	s
+_queuemsg_t	.\queuemsg.h	/^typedef struct _queuemsg_t$/;"	s
+_ringbuf_t	.\ringbuf.h	/^typedef struct _ringbuf_t$/;"	s
+atomic_ringbuf_t	.\ringbuf.h	/^} atomic_ringbuf_t;$/;"	t	typeref:struct:_atomic_ringbuf_t
+barcnt_t	.\barcnt.h	/^} barcnt_t;$/;"	t	typeref:struct:_barcnt_t
+barrier_array	.\producer_task.h	/^	barcnt_t* barrier_array;$/;"	m	struct:xProducerTaskParams
 barrier_count	.\Barrier.h	/^	unsigned int barrier_count;$/;"	m	struct:Barrier
+barrier_count	.\barcnt.h	/^	unsigned int barrier_count;$/;"	m	struct:_barcnt_t
 buffer	.\CircularBuffer.h	/^	char* buffer; \/\/ TODO: this should be portBASE_TYPE$/;"	m	struct:CircularBuffer
 buffer	.\CircularBuffer.h	/^	char* buffer; \/\/ TODO: this should be portBASE_TYPE$/;"	m	struct:CircularBufferLockable
-buffer_len	.\QueueMessage.h	/^	size_t buffer_len;$/;"	m	struct:QueueMessage
-buffer_ptr	.\QueueMessage.h	/^	void *buffer_ptr;$/;"	m	struct:QueueMessage
-circular_buffer	.\ConsumerTaskParams.h	/^	CircularBufferLockable* circular_buffer;$/;"	m	struct:xConsumerTaskInitParams
-circular_buffer	.\ConsumerTaskParams.h	/^	CircularBufferLockable* circular_buffer;$/;"	m	struct:xConsumerTaskParams
-circular_buffer	.\ProducerTaskParams.h	/^	CircularBufferLockable* circular_buffer;$/;"	m	struct:xProducerTaskInitParams
-circular_buffer	.\ProducerTaskParams.h	/^	CircularBufferLockable* circular_buffer;$/;"	m	struct:xProducerTaskParams
+buffer	.\ringbuf.h	/^	char* buffer; \/\/ TODO: this should be portBASE_TYPE$/;"	m	struct:_atomic_ringbuf_t
+buffer	.\ringbuf.h	/^	char* buffer; \/\/ TODO: this should be portBASE_TYPE$/;"	m	struct:_ringbuf_t
+buffer_len	.\queuemsg.h	/^	size_t buffer_len;$/;"	m	struct:_queuemsg_t
+buffer_ptr	.\queuemsg.h	/^	void *buffer_ptr;$/;"	m	struct:_queuemsg_t
+circular_buffer	.\consumer_task.h	/^	atomic_ringbuf_t* circular_buffer;$/;"	m	struct:xConsumerTaskInitParams
+circular_buffer	.\consumer_task.h	/^	atomic_ringbuf_t* circular_buffer;$/;"	m	struct:xConsumerTaskParams
+circular_buffer	.\producer_task.h	/^	atomic_ringbuf_t* circular_buffer;$/;"	m	struct:xProducerTaskInitParams
+circular_buffer	.\producer_task.h	/^	atomic_ringbuf_t* circular_buffer;$/;"	m	struct:xProducerTaskParams
 configASSERT	.\freertos\FreeRTOSConfig.h	148;"	d
 configASSERT	.\freertos\include\FreeRTOS.h	257;"	d
 configASSERT_DEFINED	.\freertos\include\FreeRTOS.h	258;"	d
 configASSERT_DEFINED	.\freertos\include\FreeRTOS.h	260;"	d
 configCHECK_FOR_STACK_OVERFLOW	.\freertos\FreeRTOSConfig.h	92;"	d
 configCHECK_FOR_STACK_OVERFLOW	.\freertos\include\FreeRTOS.h	397;"	d
-configCONSUMER_STACK_SIZE	.\consumer_task.c	46;"	d	file:
+configCONSUMER_STACK_SIZE	.\consumer_task.c	42;"	d	file:
 configENABLE_BACKWARD_COMPATIBILITY	.\freertos\include\FreeRTOS.h	723;"	d
 configEXPECTED_IDLE_TIME_BEFORE_SLEEP	.\freertos\include\FreeRTOS.h	665;"	d
 configGENERATE_RUN_TIME_STATS	.\freertos\FreeRTOSConfig.h	112;"	d
@@ -226,11 +200,11 @@ configUSE_TIMERS	.\freertos\include\FreeRTOS.h	217;"	d
 configUSE_TIME_SLICING	.\freertos\include\FreeRTOS.h	693;"	d
 configUSE_TRACE_FACILITY	.\freertos\FreeRTOSConfig.h	88;"	d
 configUSE_TRACE_FACILITY	.\freertos\include\FreeRTOS.h	713;"	d
-consumer_count_barrier	.\QueueMessage.h	/^	Barrier *consumer_count_barrier;$/;"	m	struct:QueueMessage
-consumer_id	.\ConsumerTaskParams.h	/^	unsigned int consumer_id;$/;"	m	struct:xConsumerTaskInitParams
-consumer_id	.\ConsumerTaskParams.h	/^	unsigned int consumer_id;$/;"	m	struct:xConsumerTaskParams
-consumer_task_count	.\ProducerTaskParams.h	/^	unsigned int consumer_task_count;$/;"	m	struct:xProducerTaskInitParams
-consumer_task_count	.\ProducerTaskParams.h	/^	unsigned int consumer_task_count;$/;"	m	struct:xProducerTaskParams
+consumer_count_barrier	.\queuemsg.h	/^	barcnt_t *consumer_count_barrier;$/;"	m	struct:_queuemsg_t
+consumer_id	.\consumer_task.h	/^	unsigned int consumer_id;$/;"	m	struct:xConsumerTaskInitParams
+consumer_id	.\consumer_task.h	/^	unsigned int consumer_id;$/;"	m	struct:xConsumerTaskParams
+consumer_task_count	.\producer_task.h	/^	unsigned int consumer_task_count;$/;"	m	struct:xProducerTaskInitParams
+consumer_task_count	.\producer_task.h	/^	unsigned int consumer_task_count;$/;"	m	struct:xProducerTaskParams
 corCoRoutineControlBlock	.\freertos\include\croutine.h	/^typedef struct corCoRoutineControlBlock$/;"	s
 corINITIAL_STATE	.\freertos\croutine.c	93;"	d	file:
 crCOROUTINE_CODE	.\freertos\include\croutine.h	/^typedef void (*crCOROUTINE_CODE)( CoRoutineHandle_t, UBaseType_t );$/;"	t
@@ -243,6 +217,7 @@ crQUEUE_SEND_FROM_ISR	.\freertos\include\croutine.h	619;"	d
 crSET_STATE0	.\freertos\include\croutine.h	279;"	d
 crSET_STATE1	.\freertos\include\croutine.h	280;"	d
 crSTART	.\freertos\include\croutine.h	242;"	d
+dec_barcnt	.\barcnt.c	/^int dec_barcnt(barcnt_t *b)$/;"	f
 decrement_barrier	.\Barrier.c	/^int decrement_barrier(Barrier *b)$/;"	f
 eAbortSleep	.\freertos\include\task.h	/^	eAbortSleep = 0,		\/* A task has been made ready or a context switch pended since portSUPPORESS_TICKS_AND_SLEEP() was called - abort entering a sleep mode. *\/$/;"	e	enum:__anon2
 eBlocked	.\freertos\include\task.h	/^	eBlocked,		\/* The task being queried is in the Blocked state. *\/$/;"	e	enum:__anon1
@@ -274,14 +249,20 @@ eventWAIT_FOR_ALL_BITS	.\freertos\event_groups.c	100;"	d	file:
 eventWAIT_FOR_ALL_BITS	.\freertos\event_groups.c	105;"	d	file:
 head	.\CircularBuffer.h	/^	unsigned int head;$/;"	m	struct:CircularBuffer
 head	.\CircularBuffer.h	/^	unsigned int head;$/;"	m	struct:CircularBufferLockable
+head	.\ringbuf.h	/^	unsigned int head;$/;"	m	struct:_atomic_ringbuf_t
+head	.\ringbuf.h	/^	unsigned int head;$/;"	m	struct:_ringbuf_t
 heapADJUSTED_HEAP_SIZE	.\freertos\portable\memang\heap_4.c	93;"	d	file:
 heapBITS_PER_BYTE	.\freertos\portable\memang\heap_4.c	90;"	d	file:
 heapMINIMUM_BLOCK_SIZE	.\freertos\portable\memang\heap_4.c	87;"	d	file:
 heapSTRUCT_SIZE	.\freertos\portable\memang\heap_4.c	/^static const uint16_t heapSTRUCT_SIZE	= ( ( sizeof ( BlockLink_t ) + ( portBYTE_ALIGNMENT - 1 ) ) & ~portBYTE_ALIGNMENT_MASK );$/;"	v	file:
+init_atomic_ringbuf	.\ringbuf.c	/^init_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *buffer, unsigned int buffer_size)$/;"	f
 init_consumer_task	.\consumer_task.c	/^init_consumer_task(void *pvParameters)$/;"	f
 init_producer_task	.\producer_task.c	/^init_producer_task(void *pvParameters)$/;"	f
+init_ringbuf	.\ringbuf.c	/^init_ringbuf(ringbuf_t *c, unsigned char *buffer, unsigned int buffer_size)$/;"	f
 length	.\CircularBuffer.h	/^	size_t length;$/;"	m	struct:CircularBuffer
 length	.\CircularBuffer.h	/^	size_t length;$/;"	m	struct:CircularBufferLockable
+length	.\ringbuf.h	/^	size_t length;$/;"	m	struct:_atomic_ringbuf_t
+length	.\ringbuf.h	/^	size_t length;$/;"	m	struct:_ringbuf_t
 listCURRENT_LIST_LENGTH	.\freertos\include\list.h	246;"	d
 listGET_END_MARKER	.\freertos\include\list.h	232;"	d
 listGET_HEAD_ENTRY	.\freertos\include\list.h	216;"	d
@@ -297,10 +278,10 @@ listLIST_IS_INITIALISED	.\freertos\include\list.h	324;"	d
 listLIST_ITEM_CONTAINER	.\freertos\include\list.h	317;"	d
 listSET_LIST_ITEM_OWNER	.\freertos\include\list.h	171;"	d
 listSET_LIST_ITEM_VALUE	.\freertos\include\list.h	189;"	d
-llInitialRunTimeCounterValue	.\freertos\portable\mingw\Run-time-stats-utils.c	/^static long long llInitialRunTimeCounterValue = 0LL, llTicksPerHundedthMillisecond = 0LL;$/;"	v	file:
-llTicksPerHundedthMillisecond	.\freertos\portable\mingw\Run-time-stats-utils.c	/^static long long llInitialRunTimeCounterValue = 0LL, llTicksPerHundedthMillisecond = 0LL;$/;"	v	file:
 lock_mutex	.\Barrier.h	/^	xSemaphoreHandle lock_mutex;$/;"	m	struct:Barrier
 lock_mutex	.\CircularBuffer.h	/^	xSemaphoreHandle lock_mutex;$/;"	m	struct:CircularBufferLockable
+lock_mutex	.\barcnt.h	/^	xSemaphoreHandle lock_mutex;$/;"	m	struct:_barcnt_t
+lock_mutex	.\ringbuf.h	/^	xSemaphoreHandle lock_mutex;$/;"	m	struct:_atomic_ringbuf_t
 main	.\main.c	/^int main( void )$/;"	f
 mainQUEUE_LENGTH	.\main_app.c	42;"	d	file:
 main_app	.\main_app.c	/^void main_app( void )$/;"	f
@@ -463,10 +444,10 @@ pxStack	.\freertos\tasks.c	/^	StackType_t			*pxStack;			\/*< Points to the start
 pxTaskTag	.\freertos\tasks.c	/^		TaskHookFunction_t pxTaskTag;$/;"	m	struct:tskTaskControlBlock	file:
 pxTimer	.\freertos\timers.c	/^	Timer_t *			pxTimer;			\/*<< The timer to which the command will be applied. *\/$/;"	m	struct:tmrTimerParameters	file:
 pxTopOfStack	.\freertos\tasks.c	/^	volatile StackType_t	*pxTopOfStack;	\/*< Points to the location of the last item placed on the tasks stack.  THIS MUST BE THE FIRST MEMBER OF THE TCB STRUCT. *\/$/;"	m	struct:tskTaskControlBlock	file:
-queue	.\ConsumerTaskParams.h	/^	QueueHandle_t queue;$/;"	m	struct:xConsumerTaskInitParams
-queue	.\ConsumerTaskParams.h	/^	QueueHandle_t queue;$/;"	m	struct:xConsumerTaskParams
-queue	.\ProducerTaskParams.h	/^	QueueHandle_t* queue;$/;"	m	struct:xProducerTaskInitParams
-queue	.\ProducerTaskParams.h	/^	QueueHandle_t* queue;$/;"	m	struct:xProducerTaskParams
+queue	.\consumer_task.h	/^	QueueHandle_t queue;$/;"	m	struct:xConsumerTaskInitParams
+queue	.\consumer_task.h	/^	QueueHandle_t queue;$/;"	m	struct:xConsumerTaskParams
+queue	.\producer_task.h	/^	QueueHandle_t* queue;$/;"	m	struct:xProducerTaskInitParams
+queue	.\producer_task.h	/^	QueueHandle_t* queue;$/;"	m	struct:xProducerTaskParams
 queueLOCKED_UNMODIFIED	.\freertos\queue.c	91;"	d	file:
 queueMUTEX_GIVE_BLOCK_TIME	.\freertos\queue.c	111;"	d	file:
 queueOVERWRITE	.\freertos\include\queue.h	103;"	d
@@ -483,16 +464,25 @@ queueSEND_TO_FRONT	.\freertos\include\queue.h	102;"	d
 queueUNLOCKED	.\freertos\queue.c	90;"	d	file:
 queueYIELD_IF_USING_PREEMPTION	.\freertos\queue.c	116;"	d	file:
 queueYIELD_IF_USING_PREEMPTION	.\freertos\queue.c	118;"	d	file:
+queuemsg_t	.\queuemsg.h	/^} queuemsg_t;$/;"	t	typeref:struct:_queuemsg_t
+read_atomic_ringbuf	.\ringbuf.c	/^read_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *dataOut, unsigned int length){$/;"	f
+read_ringbuf	.\ringbuf.c	/^int read_ringbuf(ringbuf_t *c, unsigned char *dataOut, unsigned int length)$/;"	f
+ringbuf_t	.\ringbuf.h	/^} ringbuf_t;$/;"	t	typeref:struct:_ringbuf_t
 semBINARY_SEMAPHORE_QUEUE_LENGTH	.\freertos\include\semphr.h	77;"	d
 semGIVE_BLOCK_TIME	.\freertos\include\semphr.h	79;"	d
 semSEMAPHORE_QUEUE_ITEM_LENGTH	.\freertos\include\semphr.h	78;"	d
+set_barcnt	.\barcnt.c	/^int set_barcnt(barcnt_t *b, unsigned int count)$/;"	f
 set_barrier	.\Barrier.c	/^int set_barrier(Barrier *b, unsigned int count)$/;"	f
 size	.\CircularBuffer.h	/^	unsigned int size;$/;"	m	struct:CircularBuffer
 size	.\CircularBuffer.h	/^	unsigned int size;$/;"	m	struct:CircularBufferLockable
+size	.\ringbuf.h	/^	unsigned int size;$/;"	m	struct:_atomic_ringbuf_t
+size	.\ringbuf.h	/^	unsigned int size;$/;"	m	struct:_ringbuf_t
 static	.\freertos\croutine.c	75;"	d	file:
 static	.\freertos\tasks.c	181;"	d	file:
 tail	.\CircularBuffer.h	/^	unsigned int tail;$/;"	m	struct:CircularBuffer
 tail	.\CircularBuffer.h	/^	unsigned int tail;$/;"	m	struct:CircularBufferLockable
+tail	.\ringbuf.h	/^	unsigned int tail;$/;"	m	struct:_atomic_ringbuf_t
+tail	.\ringbuf.h	/^	unsigned int tail;$/;"	m	struct:_ringbuf_t
 taskDISABLE_INTERRUPTS	.\freertos\include\task.h	226;"	d
 taskENABLE_INTERRUPTS	.\freertos\include\task.h	236;"	d
 taskENTER_CRITICAL	.\freertos\include\task.h	202;"	d
@@ -604,7 +594,7 @@ traceTIMER_CREATE	.\freertos\include\FreeRTOS.h	535;"	d
 traceTIMER_CREATE_FAILED	.\freertos\include\FreeRTOS.h	539;"	d
 traceTIMER_EXPIRED	.\freertos\include\FreeRTOS.h	547;"	d
 tskBLOCKED_CHAR	.\freertos\tasks.c	257;"	d	file:
-tskCONSUMER_PRIORITY	.\consumer_task.c	53;"	d	file:
+tskCONSUMER_PRIORITY	.\consumer_task.c	44;"	d	file:
 tskDELETED_CHAR	.\freertos\tasks.c	259;"	d	file:
 tskIDLE_PRIORITY	.\freertos\include\task.h	178;"	d
 tskIDLE_STACK_SIZE	.\freertos\tasks.c	105;"	d	file:
@@ -624,7 +614,6 @@ ucHeap	.\freertos\portable\memang\heap_4.c	/^static uint8_t ucHeap[ configTOTAL_
 ucQueueGetQueueType	.\freertos\queue.c	/^	uint8_t ucQueueGetQueueType( QueueHandle_t xQueue )$/;"	f
 ucQueueType	.\freertos\queue.c	/^		uint8_t ucQueueType;$/;"	m	struct:QueueDefinition	file:
 ulCriticalNesting	.\freertos\portable\mingw\port.c	/^static uint32_t ulCriticalNesting = 9999UL;$/;"	v	file:
-ulGetRunTimeCounterValue	.\freertos\portable\mingw\Run-time-stats-utils.c	/^unsigned long ulGetRunTimeCounterValue( void )$/;"	f
 ulIsrHandler	.\freertos\portable\mingw\port.c	/^static uint32_t (*ulIsrHandler[ portMAX_INTERRUPTS ])( void ) = { 0 };$/;"	v	file:
 ulLengthInBytes	.\freertos\include\task.h	/^	uint32_t ulLengthInBytes;$/;"	m	struct:xMEMORY_REGION
 ulParameter2	.\freertos\timers.c	/^	uint32_t ulParameter2;					\/* << The value that will be used as the callback functions second parameter. *\/$/;"	m	struct:tmrCallbackParameters	file:
@@ -689,7 +678,6 @@ vApplicationTickHook	.\main.c	/^void vApplicationTickHook( void )$/;"	f
 vAssertCalled	.\main.c	/^void vAssertCalled( unsigned long ulLine, const char * const pcFileName )$/;"	f
 vCoRoutineAddToDelayedList	.\freertos\croutine.c	/^void vCoRoutineAddToDelayedList( TickType_t xTicksToDelay, List_t *pxEventList )$/;"	f
 vCoRoutineSchedule	.\freertos\croutine.c	/^void vCoRoutineSchedule( void )$/;"	f
-vConfigureTimerForRunTimeStats	.\freertos\portable\mingw\Run-time-stats-utils.c	/^void vConfigureTimerForRunTimeStats( void )$/;"	f
 vEventGroupDelete	.\freertos\event_groups.c	/^void vEventGroupDelete( EventGroupHandle_t xEventGroup )$/;"	f
 vEventGroupSetBitsCallback	.\freertos\event_groups.c	/^void vEventGroupSetBitsCallback( void *pvEventGroup, const uint32_t ulBitsToSet )$/;"	f
 vListInitialise	.\freertos\list.c	/^void vListInitialise( List_t * const pxList )$/;"	f
@@ -756,6 +744,8 @@ vTaskSuspend	.\freertos\tasks.c	/^	void vTaskSuspend( TaskHandle_t xTaskToSuspen
 vTaskSuspendAll	.\freertos\include\mpu_wrappers.h	88;"	d
 vTaskSuspendAll	.\freertos\tasks.c	/^void vTaskSuspendAll( void )$/;"	f
 vTaskSwitchContext	.\freertos\tasks.c	/^void vTaskSwitchContext( void )$/;"	f
+write_atomic_ringbuf	.\ringbuf.c	/^write_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *dataIn, unsigned int length)$/;"	f
+write_ringbuf	.\ringbuf.c	/^int write_ringbuf(ringbuf_t *c, unsigned char *dataIn, unsigned int length)$/;"	f
 xActiveTimerList1	.\freertos\timers.c	/^PRIVILEGED_DATA static List_t xActiveTimerList1;$/;"	v	file:
 xActiveTimerList2	.\freertos\timers.c	/^PRIVILEGED_DATA static List_t xActiveTimerList2;$/;"	v	file:
 xBlockAllocatedBit	.\freertos\portable\memang\heap_4.c	/^static size_t xBlockAllocatedBit = 0;$/;"	v	file:
@@ -765,10 +755,10 @@ xCoRoutineCreate	.\freertos\croutine.c	/^BaseType_t xCoRoutineCreate( crCOROUTIN
 xCoRoutineHandle	.\freertos\include\FreeRTOS.h	739;"	d
 xCoRoutineRemoveFromEventList	.\freertos\croutine.c	/^BaseType_t xCoRoutineRemoveFromEventList( const List_t *pxEventList )$/;"	f
 xCoRoutineTickCount	.\freertos\croutine.c	/^static TickType_t xCoRoutineTickCount = 0, xLastTickCount = 0, xPassedTicks = 0;$/;"	v	file:
-xConsumerTaskInitParams	.\ConsumerTaskParams.h	/^typedef struct xConsumerTaskInitParams {$/;"	s
-xConsumerTaskInitParams	.\ConsumerTaskParams.h	/^} xConsumerTaskInitParams;$/;"	t	typeref:struct:xConsumerTaskInitParams
-xConsumerTaskParams	.\ConsumerTaskParams.h	/^typedef struct xConsumerTaskParams {$/;"	s
-xConsumerTaskParams	.\ConsumerTaskParams.h	/^} xConsumerTaskParams;$/;"	t	typeref:struct:xConsumerTaskParams
+xConsumerTaskInitParams	.\consumer_task.h	/^typedef struct xConsumerTaskInitParams {$/;"	s
+xConsumerTaskInitParams	.\consumer_task.h	/^} xConsumerTaskInitParams;$/;"	t	typeref:struct:xConsumerTaskInitParams
+xConsumerTaskParams	.\consumer_task.h	/^typedef struct xConsumerTaskParams {$/;"	s
+xConsumerTaskParams	.\consumer_task.h	/^} xConsumerTaskParams;$/;"	t	typeref:struct:xConsumerTaskParams
 xDelayedCoRoutineList1	.\freertos\croutine.c	/^static List_t xDelayedCoRoutineList1;									\/*< Delayed co-routines. *\/$/;"	v	file:
 xDelayedCoRoutineList2	.\freertos\croutine.c	/^static List_t xDelayedCoRoutineList2;									\/*< Delayed co-routines (two lists are used - one for delays that have overflowed the current tick count. *\/$/;"	v	file:
 xDelayedTaskList1	.\freertos\tasks.c	/^PRIVILEGED_DATA static List_t xDelayedTaskList1;						\/*< Delayed tasks. *\/$/;"	v	file:
@@ -819,10 +809,10 @@ xPortGetFreeHeapSize	.\freertos\portable\memang\heap_4.c	/^size_t xPortGetFreeHe
 xPortGetMinimumEverFreeHeapSize	.\freertos\portable\memang\heap_4.c	/^size_t xPortGetMinimumEverFreeHeapSize( void )$/;"	f
 xPortRunning	.\freertos\portable\mingw\port.c	/^static BaseType_t xPortRunning = pdFALSE;$/;"	v	file:
 xPortStartScheduler	.\freertos\portable\mingw\port.c	/^BaseType_t xPortStartScheduler( void )$/;"	f
-xProducerTaskInitParams	.\ProducerTaskParams.h	/^typedef struct xProducerTaskInitParams {$/;"	s
-xProducerTaskInitParams	.\ProducerTaskParams.h	/^} xProducerTaskInitParams;$/;"	t	typeref:struct:xProducerTaskInitParams
-xProducerTaskParams	.\ProducerTaskParams.h	/^typedef struct xProducerTaskParams {$/;"	s
-xProducerTaskParams	.\ProducerTaskParams.h	/^} xProducerTaskParams;$/;"	t	typeref:struct:xProducerTaskParams
+xProducerTaskInitParams	.\producer_task.h	/^typedef struct xProducerTaskInitParams {$/;"	s
+xProducerTaskInitParams	.\producer_task.h	/^} xProducerTaskInitParams;$/;"	t	typeref:struct:xProducerTaskInitParams
+xProducerTaskParams	.\producer_task.h	/^typedef struct xProducerTaskParams {$/;"	s
+xProducerTaskParams	.\producer_task.h	/^} xProducerTaskParams;$/;"	t	typeref:struct:xProducerTaskParams
 xQUEUE	.\freertos\queue.c	/^} xQUEUE;$/;"	t	typeref:struct:QueueDefinition	file:
 xQueueAddToSet	.\freertos\include\mpu_wrappers.h	117;"	d
 xQueueAddToSet	.\freertos\queue.c	/^	BaseType_t xQueueAddToSet( QueueSetMemberHandle_t xQueueOrSemaphore, QueueSetHandle_t xQueueSet )$/;"	f

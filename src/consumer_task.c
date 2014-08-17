@@ -1,7 +1,7 @@
 /****************************************************************************
 *
 * Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Written by Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -33,23 +33,14 @@
 #include "portable.h"
 
 /* Application includes. */
-#include "ConsumerTaskParams.h"
-#include "CircularBuffer.h"
-#include "Barrier.h"
-#include "QueueMessage.h"
+#include "consumer_task.h"
+#include "ringbuf.h"
+#include "barcnt.h"
+#include "queuemsg.h"
 
-//*****************************************************************************
-//
-// The stack size for the task
-//
-//*****************************************************************************
+
 #define configCONSUMER_STACK_SIZE        configMINIMAL_STACK_SIZE // Stack size in words
 
-//*****************************************************************************
-//
-// Priority for the task
-//
-//*****************************************************************************
 #define tskCONSUMER_PRIORITY        (tskIDLE_PRIORITY + 1) // Offset from IDLE priority
 
 //*****************************************************************************
@@ -63,9 +54,9 @@ prvConsumerTask(void *pvParameters)
 	/* Variable declarations */
 	QueueHandle_t queue = NULL;
 	//Barrier* barrier = NULL;
-	CircularBufferLockable* circular_buffer = NULL;
+	atomic_ringbuf_t* circular_buffer = NULL;
 	unsigned int consumer_id = 0;
-	QueueMessage message = {NULL, NULL, NULL};
+	queuemsg_t message = {NULL, NULL, NULL};
 	portBASE_TYPE local_buffer[256];
 	portBASE_TYPE local_buffer_length = 0;
 	
@@ -89,19 +80,19 @@ prvConsumerTask(void *pvParameters)
 		memcpy(local_buffer, message.buffer_ptr, local_buffer_length);
 
 		{
-			/* delay 0 - 490ms (simulate other tasks being done)*/
+			/* delay 0 - 490ms (simulate other tasks being done) */
 			vTaskDelay(pseudorandom_wait * 10 / portTICK_RATE_MS);
 			pseudorandom_wait = (2*pseudorandom_wait) % 50;
 		}
 
 		printf("c%02d: %s\n", consumer_id, (char*)local_buffer);
 
-		barrier_result = decrement_barrier(message.consumer_count_barrier);
+		barrier_result = dec_barcnt(message.consumer_count_barrier);
 
 		if (barrier_result == 0)
 		{
 			// Last barrier, free up cbuff memory
-			CircularBufferReadLockable( circular_buffer, NULL, local_buffer_length );
+			read_atomic_ringbuf( circular_buffer, NULL, local_buffer_length );
 			// TODO: put into dec_barrier?
 		}
 		else if (barrier_result < 0)

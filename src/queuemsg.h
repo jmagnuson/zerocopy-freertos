@@ -1,7 +1,6 @@
 /****************************************************************************
 *
-* Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Copyright (C) 2014, Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -32,14 +31,14 @@
 #define QUEUEMESSAGE_H_
 
 /* Application includes. */
-#include "Barrier.h"
+#include "barcnt.h"
 
-typedef struct QueueMessage
+typedef struct _queuemsg_t
 {
 	void *buffer_ptr;
 	size_t buffer_len;
-	Barrier *consumer_count_barrier;
+	barcnt_t *consumer_count_barrier;
 
-} QueueMessage;
+} queuemsg_t;
 
 #endif /* QUEUEMESSAGE_H_ */

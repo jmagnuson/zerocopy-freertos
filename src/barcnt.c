@@ -1,7 +1,6 @@
 /****************************************************************************
 *
-* Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Copyright (C) 2014, Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -21,14 +20,14 @@
 ****************************************************************************/
 
 /* Application includes. */
-#include "Barrier.h"
+#include "barcnt.h"
 
 #if defined ( __GNUC__ )
 #define X86_ATOMIC
 // TODO: Implement generalized atomic check
 #endif
 
-int set_barrier(Barrier *b, unsigned int count)
+int set_barcnt(barcnt_t *b, unsigned int count)
 {
 	// Take mutex
 	if ( xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
@@ -47,7 +46,7 @@ int set_barrier(Barrier *b, unsigned int count)
 	return count;
 }
 
-int decrement_barrier(Barrier *b)
+int dec_barcnt(barcnt_t *b)
 {
 	int return_value = -1;
 

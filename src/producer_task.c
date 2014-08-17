@@ -1,7 +1,7 @@
 /****************************************************************************
 *
 * Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Written by Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -28,10 +28,10 @@
 #include "portable.h"
 
 /* Application includes. */
-#include "ProducerTaskParams.h"
-#include "CircularBuffer.h"
-#include "Barrier.h"
-#include "QueueMessage.h"
+#include "producer_task.h"
+#include "ringbuf.h"
+#include "barcnt.h"
+#include "queuemsg.h"
 
 //*****************************************************************************
 //
@@ -57,10 +57,10 @@ prvProducerTask(void *pvParameters)
 {
 	/* Variable declarations */
 	QueueHandle_t *queue = NULL;
-	Barrier *barrier_array = NULL;
-	CircularBufferLockable* circular_buffer = 0;
+	barcnt_t *barrier_array = NULL;
+	atomic_ringbuf_t* circular_buffer = 0;
 	unsigned int consumer_task_count = 0;
-	QueueMessage message = {NULL, NULL, NULL};
+	queuemsg_t message = {NULL, NULL, NULL};
 	portBASE_TYPE local_buffer[256];
 	portBASE_TYPE local_buffer_length = 0;
 	portBASE_TYPE local_counter = 0;
@@ -84,7 +84,7 @@ prvProducerTask(void *pvParameters)
 		printf("p%02d: %s\n", 0, (char*)local_buffer);
 
 		// Send message
-		if (CircularBufferWriteLockable(circular_buffer, local_buffer,local_buffer_length) > 0)
+		if (write_atomic_ringbuf(circular_buffer, local_buffer,local_buffer_length) > 0)
 		{
 			message.buffer_ptr = (circular_buffer->buffer+circular_buffer->tail);
 			message.buffer_len = local_buffer_length;
@@ -124,7 +124,7 @@ init_producer_task(void *pvParameters)
 	taskParams->consumer_task_count =
 			((xProducerTaskInitParams*) pvParameters)->consumer_task_count;
 
-	Barrier *barrier_array = pvPortMalloc( 10 * sizeof( Barrier ) );
+	barcnt_t *barrier_array = pvPortMalloc( 10 * sizeof( barcnt_t ) );
 	{ // Scope out the counter
 		volatile unsigned int local_counter = 0;
 		for (local_counter=0; local_counter<10; local_counter++)

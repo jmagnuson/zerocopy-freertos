@@ -1,7 +1,7 @@
 /****************************************************************************
 *
 * Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Written by Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify

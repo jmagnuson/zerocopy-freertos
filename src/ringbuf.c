@@ -1,7 +1,7 @@
 /****************************************************************************
 *
 * Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Written by Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -22,21 +22,21 @@
 
 
 /*
- * CircularBuffer.c
+ * ringbuf.c
  *
  *  Created on: Dec 15, 2012
  *      Author: jon
  */
 
 /* Application includes. */
-#include "CircularBuffer.h"
+#include "ringbuf.h"
 
 /******************************************************************************
 	Non-thread-safe routines
 ******************************************************************************/
 
 int
-CircularBufferInitialize(CircularBuffer *c, unsigned char *buffer, unsigned int buffer_size)
+init_ringbuf(ringbuf_t *c, unsigned char *buffer, unsigned int buffer_size)
 {
 	c->buffer = buffer;
 	c->size = buffer_size;
@@ -47,7 +47,7 @@ CircularBufferInitialize(CircularBuffer *c, unsigned char *buffer, unsigned int 
 	return 0;
 }
 
-int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int length)
+int write_ringbuf(ringbuf_t *c, unsigned char *dataIn, unsigned int length)
 {
 	if (c->size >= (c->length + length)){
 		// buffer won't overflow
@@ -79,7 +79,7 @@ int CircularBufferWrite(CircularBuffer *c, unsigned char *dataIn, unsigned int l
 	}
 }
 
-int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int length)
+int read_ringbuf(ringbuf_t *c, unsigned char *dataOut, unsigned int length)
 {
 
 	if (c->length >= length){
@@ -120,7 +120,7 @@ int CircularBufferRead(CircularBuffer *c, unsigned char *dataOut, unsigned int l
 ******************************************************************************/
 
 int
-CircularBufferInitializeLockable(CircularBufferLockable *c, unsigned char *buffer, unsigned int buffer_size)
+init_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *buffer, unsigned int buffer_size)
 {
 	c->buffer = buffer;
 	c->size = buffer_size;
@@ -139,7 +139,7 @@ CircularBufferInitializeLockable(CircularBufferLockable *c, unsigned char *buffe
 }
 
 int
-CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, unsigned int length)
+write_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *dataIn, unsigned int length)
 {
 
 	int result = 0;
@@ -188,7 +188,7 @@ CircularBufferWriteLockable(CircularBufferLockable *c, unsigned char *dataIn, un
 }
 
 int
-CircularBufferReadLockable(CircularBufferLockable *c, unsigned char *dataOut, unsigned int length){
+read_atomic_ringbuf(atomic_ringbuf_t *c, unsigned char *dataOut, unsigned int length){
 
 	int result = 0;
 

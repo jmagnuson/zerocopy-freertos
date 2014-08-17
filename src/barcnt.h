@@ -1,7 +1,6 @@
 /****************************************************************************
 *
-* Copyright (C) 2014
-* Written by Jon Magnuson, (my.name at google's mail service)
+* Copyright (C) 2014, Jon Magnuson <my.name at google's mail service>
 * All Rights Reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -20,20 +19,20 @@
 *
 ****************************************************************************/
 
-#ifndef BARRIER_H_
-#define BARRIER_H_
+#ifndef BARCNT_H_
+#define BARCNT_H_
 
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "semphr.h"
 
-typedef struct Barrier
+typedef struct _barcnt_t
 {
 	xSemaphoreHandle lock_mutex;
 	unsigned int barrier_count;
-} Barrier;
+} barcnt_t;
 
-int set_barrier(Barrier *b, unsigned int count);
-int decrement_barrier(Barrier *b);
+int set_barcnt(barcnt_t *b, unsigned int count);
+int dec_barcnt(barcnt_t *b);
 
 #endif
