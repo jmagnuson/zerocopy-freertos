@@ -23,4 +23,17 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src</name>
+			<type>2</type>
+			<locationURI>SRC_LOC</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>SRC_LOC</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/src</value>
+		</variable>
+	</variableList>
 </projectDescription>
