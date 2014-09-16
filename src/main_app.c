@@ -42,7 +42,7 @@ unsigned long init_producer_task( void *pvParameters );
 #define mainQUEUE_LENGTH 10
 #define CBUFF_ARRAY_LENGTH 2048
 
-#define NUM_OF_CONSUMERS 15
+#define NUM_OF_CONSUMERS 3
 
 void main_app( void )
 {
@@ -50,7 +50,7 @@ void main_app( void )
 	static xProducerTaskInitParams producerTaskInitParams;
 	static xConsumerTaskInitParams consumerTaskInitParams[NUM_OF_CONSUMERS];
 	QueueHandle_t xQueueArray[NUM_OF_CONSUMERS];
-	static portBASE_TYPE circular_buffer_array[CBUFF_ARRAY_LENGTH];
+	portBASE_TYPE circular_buffer_array[CBUFF_ARRAY_LENGTH] = {NULL};
 	static atomic_ringbuf_t circular_buffer = {NULL, NULL, NULL, NULL, NULL, NULL};
 
 	/* Variable initialization */
@@ -61,7 +61,7 @@ void main_app( void )
 			xQueueArray[i] = xQueueCreate( mainQUEUE_LENGTH, sizeof( queuemsg_t ) );
 		}
 	}
-	init_atomic_ringbuf(&circular_buffer, &circular_buffer_array[0], CBUFF_ARRAY_LENGTH);
+	init_atomic_ringbuf(&circular_buffer, (unsigned char*)&circular_buffer_array[0], CBUFF_ARRAY_LENGTH);
 	
 	producerTaskInitParams.queue = xQueueArray;
 	producerTaskInitParams.circular_buffer = &circular_buffer;

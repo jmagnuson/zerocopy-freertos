@@ -7,7 +7,6 @@
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
-			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -19,8 +18,10 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>com.ti.ccstudio.core.ccsNature</nature>
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
 	<linkedResources>
@@ -32,16 +33,16 @@
 	</linkedResources>
 	<filteredResources>
 		<filter>
-			<id>1410360936057</id>
+			<id>1410361437734</id>
 			<name>src/freertos/portable</name>
 			<type>25</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-mingw</arguments>
+				<arguments>1.0-name-matches-false-false-ccs</arguments>
 			</matcher>
 		</filter>
 		<filter>
-			<id>1410360936060</id>
+			<id>1410361437736</id>
 			<name>src/freertos/portable</name>
 			<type>25</type>
 			<matcher>
@@ -50,12 +51,21 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1410363723762</id>
+			<id>1410361483480</id>
+			<name>src/freertos/portable/ccs</name>
+			<type>25</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-arm_cm4f</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1410363680997</id>
 			<name>src/freertos/portable/memang</name>
 			<type>5</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-heap_4.c</arguments>
+				<arguments>1.0-name-matches-false-false-heap_1.c</arguments>
 			</matcher>
 		</filter>
 	</filteredResources>
@@ -63,6 +73,10 @@
 		<variable>
 			<name>SRC_LOC</name>
 			<value>$%7BPARENT-2-PROJECT_LOC%7D/src</value>
+		</variable>
+		<variable>
+			<name>SW_ROOT</name>
+			<value>$%7BPARENT-2-CCS_BASE_ROOT%7D/TivaWare_C_Series-2.1.0.12573</value>
 		</variable>
 	</variableList>
 </projectDescription>

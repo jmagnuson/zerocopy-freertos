@@ -20,6 +20,12 @@
 *
 ****************************************************************************/
 
+/* Standard includes. */
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <string.h>
+
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "task.h"
@@ -79,12 +85,18 @@ prvProducerTask(void *pvParameters)
 		// Wait 1 second
 		vTaskDelay(1000 / portTICK_RATE_MS);
 
-		sprintf(local_buffer, "%d", local_counter++);
-		local_buffer_length = strlen(local_buffer);
+#if defined (__WIN32__)
+		sprintf((char*)local_buffer, "%d", local_counter++);
+		local_buffer_length = strlen((char*)local_buffer);
 		printf("p%02d: %s\n", 0, (char*)local_buffer);
+#else
+		ltoa(local_counter++, (char*)local_buffer);
+		local_buffer_length = strlen((char*)local_buffer);
+		// TODO: usblib printf, or something else
+#endif
 
 		// Send message
-		if (write_atomic_ringbuf(circular_buffer, local_buffer,local_buffer_length) > 0)
+		if (write_atomic_ringbuf(circular_buffer, (unsigned char*)&local_buffer[0],local_buffer_length) > 0)
 		{
 			message.buffer_ptr = (circular_buffer->buffer+circular_buffer->tail);
 			message.buffer_len = local_buffer_length;

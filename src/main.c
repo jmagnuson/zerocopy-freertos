@@ -24,7 +24,11 @@
 /* Standard includes. */
 #include <stdio.h>
 #include <stdlib.h>
+
+/* Windows-specific includes */
+#if defined (__WIN32__)
 #include <conio.h>
+#endif
 
 /* FreeRTOS kernel includes. */
 #include "FreeRTOS.h"
@@ -111,7 +115,10 @@ void vAssertCalled( unsigned long ulLine, const char * const pcFileName )
 	( void ) pcFileName;
 
 	taskDISABLE_INTERRUPTS();
+
+#if defined (__WIN32__)
 	__asm volatile( "int $3" );
+#endif
 
 	taskENABLE_INTERRUPTS();
 

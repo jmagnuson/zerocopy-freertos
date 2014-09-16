@@ -85,7 +85,11 @@ prvConsumerTask(void *pvParameters)
 			pseudorandom_wait = (2*pseudorandom_wait) % 50;
 		}
 
+#if defined(__WIN32__)
 		printf("c%02d: %s\n", consumer_id, (char*)local_buffer);
+#else
+		// TODO: usblib printf, or something else
+#endif
 
 		barrier_result = dec_barcnt(message.consumer_count_barrier);
 
