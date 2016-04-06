@@ -25,6 +25,9 @@
 #if defined ( __GNUC__ )
 #define X86_ATOMIC
 // TODO: Implement generalized atomic check
+#elif /*defined(ccs) || */defined ( __TMS470__ )
+#include "arm_atomic.h"
+#define ARM_ATOMIC
 #endif
 
 int set_barcnt(barcnt_t *b, unsigned int count)
@@ -53,6 +56,9 @@ int dec_barcnt(barcnt_t *b)
 #if defined(X86_ATOMIC)
 	// Decrement barrier
 	return_value = (int)__sync_sub_and_fetch(&(b->barrier_count), 1);
+#elif defined(ARM_ATOMIC)
+	// Decrement barrier
+	return_value = (int)sync_sub_and_fetch(&(b->barrier_count), 1);
 #else
 	// Take mutex
 	if ( xSemaphoreTake( b->lock_mutex, portMAX_DELAY ) != pdPASS )
